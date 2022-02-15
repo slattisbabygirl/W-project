@@ -14,7 +14,7 @@ local Mouse = LocalPlayer:GetMouse()
 
 -- // Optimisation Vars (ugly)
 local Drawingnew = Drawing.new
-local Color3fromRGB = Color3.new
+local Color3fromRGB = Color3.fromRGB
 local Vector2new = Vector2.new
 local GetGuiInset = GuiService.GetGuiInset
 local Randomnew = Random.new
@@ -37,10 +37,10 @@ local tableinsert = table.insert
 getgenv().Aiming = {
     Enabled = true,
 
-    ShowFOV = false,
-    FOV = 119,
+    ShowFOV = true,
+    FOV = 120,
     FOVSides = 300,
-    FOVColour = color3.fromRGB(255,255,255)
+    FOVColour = Color3fromRGB(102, 0, 153),
 
     VisibleCheck = true,
     
@@ -60,7 +60,7 @@ getgenv().Aiming = {
         },
         Players = {
             LocalPlayer,
-            1707564
+            91318356
         }
     }
 }
@@ -92,6 +92,7 @@ function Aiming.UpdateFOV()
     return circle
 end
 
+
 -- // Custom Functions
 local CalcChance = function(percentage)
     -- // Floor the percentage
@@ -116,7 +117,7 @@ function Aiming.IsPartVisible(Part, PartDescendant)
         -- // Vars
         local raycastParams = RaycastParamsnew()
         raycastParams.FilterType = EnumRaycastFilterTypeBlacklist
-        raycastParams.FilterDescendantsInstances = {Character, CurrentCamera}
+        raycastParams.FilterDescendantsInstances = Aiming.RaycastIgnore or {Character, CurrentCamera}
 
         -- // Cast ray
         local Result = Raycast(Workspace, Origin, Part.Position - Origin, raycastParams)
@@ -436,3 +437,5 @@ end)
 
 -- //
 return Aiming
+
+-- // If you want the examples, look at the docs.
