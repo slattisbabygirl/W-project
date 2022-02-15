@@ -14,7 +14,7 @@ local Mouse = LocalPlayer:GetMouse()
 
 -- // Optimisation Vars (ugly)
 local Drawingnew = Drawing.new
-local Color3fromRGB = Color3.fromRGB
+local Color3fromRGB = Color3.new
 local Vector2new = Vector2.new
 local GetGuiInset = GuiService.GetGuiInset
 local Randomnew = Random.new
@@ -40,7 +40,7 @@ getgenv().Aiming = {
     ShowFOV = false,
     FOV = 119,
     FOVSides = 300,
-    FOVColour = Color3.fromRGB(0,255,0)
+    FOVColour = Color3fromRGB(0.603921, 0.011764, 1)
 
     VisibleCheck = true,
     
