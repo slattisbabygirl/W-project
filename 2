@@ -37,10 +37,10 @@ local tableinsert = table.insert
 getgenv().Aiming = {
     Enabled = true,
 
-    ShowFOV = true,
-    FOV = 120,
+    ShowFOV = false,
+    FOV = 119,
     FOVSides = 300,
-    FOVColour = Color3fromRGB(102, 0, 153),
+    FOVColour = Color3fromRGB(255, 255, 255),
 
     VisibleCheck = true,
     
@@ -92,7 +92,6 @@ function Aiming.UpdateFOV()
     return circle
 end
 
-
 -- // Custom Functions
 local CalcChance = function(percentage)
     -- // Floor the percentage
@@ -117,7 +116,7 @@ function Aiming.IsPartVisible(Part, PartDescendant)
         -- // Vars
         local raycastParams = RaycastParamsnew()
         raycastParams.FilterType = EnumRaycastFilterTypeBlacklist
-        raycastParams.FilterDescendantsInstances = Aiming.RaycastIgnore or {Character, CurrentCamera}
+        raycastParams.FilterDescendantsInstances = {Character, CurrentCamera}
 
         -- // Cast ray
         local Result = Raycast(Workspace, Origin, Part.Position - Origin, raycastParams)
@@ -437,5 +436,3 @@ end)
 
 -- //
 return Aiming
-
--- // If you want the examples, look at the docs.
